@@ -18,13 +18,28 @@ def load_model():
 model, transformer, cluster_info = load_model()
 
 # Streamlit interface
-st.title("🧠 Product Category Clustering")
-
+st.title("🧠 Product Category Clustering") 
 user_input = st.text_area("Enter a product description:")
+
 if st.button("Predict Cluster") and user_input:
+    # Inference
     embedding = transformer.encode([user_input])
     cluster_id = model.predict(embedding)[0]
     cluster_label = cluster_info.get(str(cluster_id), "Unknown")
-    
+
+    # Display results
+    st.subheader("🔍 Prediction Results")
     st.markdown(f"**Predicted Cluster ID:** `{cluster_id}`")
-    st.markdown(f"**Cluster Label:** `{cluster_label}`")
+
+    if isinstance(cluster_label, dict):
+        size = cluster_label.get("size", "N/A")
+        top_terms = cluster_label.get("top_terms", {})
+        sorted_terms = sorted(top_terms.items(), key=lambda x: x[1], reverse=True)
+
+        st.markdown(f"**Cluster Size:** `{size}`")
+        st.markdown("**Top Terms in Cluster:**")
+        for term, count in sorted_terms:
+            st.markdown(f"- 🟢 **{term}** (_{count}_)")
+    else:
+        st.markdown(f"**Cluster Label:** `{cluster_label}`")
+
