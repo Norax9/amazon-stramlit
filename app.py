@@ -18,12 +18,12 @@ model, transformer, cluster_info = load_model()
 
 # Optional: Map cluster ID to human-readable themes
 cluster_themes = {
-    0: ("🛋️ Home & Living."),
-    1: ("🍳 Kitchen & Dining"),
-    2: ("🧴 Beauty & Personal Care"),
-    3: ("🐾 Pet Supplies", "Pet product"),
-    4: ("📚 Office & Stationery"),
-    5: ("🎮 Tech & Gadgets")
+    0: ("🛋️ Home & Living", "Furniture, home décor, and organization."),
+    1: ("🍳 Kitchen & Dining", "Kitchen tools, tableware, and cooking essentials."),
+    2: ("🧴 Beauty & Personal Care", "Skincare, cosmetics, and grooming."),
+    3: ("🐾 Pet Supplies", "Products for dogs, cats, and other pets."),
+    4: ("📚 Office & Stationery", "Office tools, paper goods, and accessories."),
+    5: ("🎮 Tech & Gadgets", "Electronics, games, and accessories.")
 }
 
 # Streamlit UI
@@ -33,19 +33,21 @@ user_input = st.text_area("Enter a product description:")
 if st.button("Predict Cluster") and user_input:
     # Inference
     embedding = transformer.encode([user_input])
-    cluster_id = int(model.predict(embedding)[0]) 
+    cluster_id = int(model.predict(embedding)[0])
     cluster_label = cluster_info.get(str(cluster_id), "Unknown")
 
     # Display Results
     st.subheader("🔍 Prediction Results")
     st.markdown(f"**Predicted Cluster ID:** `{cluster_id}`")
 
-    # Get theme info
-    theme_title, theme_desc = cluster_themes.get(cluster_id, ("🗂️ Unknown Cluster", "No description available."))
+    # Cluster title + description
+    theme_title, theme_desc = cluster_themes.get(
+        cluster_id, ("🗂️ Unknown Cluster", "No description available.")
+    )
     st.markdown(f"### {theme_title}")
     st.caption(theme_desc)
 
-    # Display cluster info
+    # Detailed cluster info
     if isinstance(cluster_label, dict):
         size = cluster_label.get("size", "N/A")
         top_terms = cluster_label.get("top_terms", {})
