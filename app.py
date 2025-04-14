@@ -33,7 +33,7 @@ user_input = st.text_area("Enter a product description:")
 if st.button("Predict Cluster") and user_input:
     # Inference
     embedding = transformer.encode([user_input])
-    cluster_id = model.predict(embedding)[0]
+    cluster_id = int(model.predict(embedding)[0]) 
     cluster_label = cluster_info.get(str(cluster_id), "Unknown")
 
     # Display Results
