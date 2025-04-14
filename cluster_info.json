@@ -1,0 +1,92 @@
+{
+  "0": {
+    "size": 15,
+    "top_terms": {
+      "amazon echo": 12,
+      "amazon home": 12,
+      "digital device 3": 12,
+      "electronics": 10,
+      "consumer electronics": 10,
+      "amazon": 9,
+      "electronics features": 8,
+      "home improvement": 8,
+      "voice assistants": 7,
+      "smart home": 7
+    }
+  },
+  "1": {
+    "size": 18,
+    "top_terms": {
+      "computers & tablets": 14,
+      "electronics": 13,
+      "kindle e-readers": 12,
+      "ebook readers": 11,
+      "e-readers & accessories": 11,
+      "electronics features": 10,
+      "tablets": 9,
+      "amazon book reader": 8,
+      "amazon ereaders": 8,
+      "tablets & e-readers": 7
+    }
+  },
+  "2": {
+    "size": 19,
+    "top_terms": {
+      "tablets": 19,
+      "computers & tablets": 18,
+      "fire tablets": 18,
+      "all tablets": 17,
+      "amazon tablets": 14,
+      "electronics": 12,
+      "tablets & ebook readers": 7,
+      "computers/tablets & networking": 7,
+      "ipad & tablets": 6,
+      "amazon": 4
+    }
+  },
+  "3": {
+    "size": 4,
+    "top_terms": {
+      "pet products": 4,
+      "pet supplies": 4,
+      "dog supplies": 3,
+      "custom stores": 3,
+      "crates kennels": 3,
+      "top selection from amazonpets": 3,
+      "cages & crates": 2,
+      "cat supplies": 2,
+      "crate training": 2,
+      "standard litter boxes": 1
+    }
+  },
+  "4": {
+    "size": 9,
+    "top_terms": {
+      "electronics": 9,
+      "computers & accessories": 7,
+      "accessories": 5,
+      "cases & sleeves": 3,
+      "bags": 3,
+      "laptop accessories": 3,
+      "tablet accessories": 3,
+      "computer accessories & peripherals": 3,
+      "electronics features": 3,
+      "portable computer accessories": 2
+    }
+  },
+  "5": {
+    "size": 6,
+    "top_terms": {
+      "electronics": 3,
+      "accessories": 3,
+      "aaa": 2,
+      "aa": 2,
+      "batteries & chargers": 2,
+      "batteries": 2,
+      "camcorder batteries": 2,
+      "camera & photo": 2,
+      "camera batteries": 2,
+      "health": 2
+    }
+  }
+}
