@@ -2,7 +2,6 @@ import streamlit as st
 import joblib
 import json
 from sentence_transformers import SentenceTransformer
-import numpy as np
 
 # Load model files
 @st.cache_resource
@@ -17,7 +16,17 @@ def load_model():
 
 model, transformer, cluster_info = load_model()
 
-# Streamlit interface
+# Optional: Map cluster ID to human-readable themes
+cluster_themes = {
+    0: ("🛋️ Home & Living."),
+    1: ("🍳 Kitchen & Dining"),
+    2: ("🧴 Beauty & Personal Care"),
+    3: ("🐾 Pet Supplies", "Pet product"),
+    4: ("📚 Office & Stationery"),
+    5: ("🎮 Tech & Gadgets")
+}
+
+# Streamlit UI
 st.title("🧠 Product Category Clustering") 
 user_input = st.text_area("Enter a product description:")
 
@@ -27,10 +36,16 @@ if st.button("Predict Cluster") and user_input:
     cluster_id = model.predict(embedding)[0]
     cluster_label = cluster_info.get(str(cluster_id), "Unknown")
 
-    # Display results
+    # Display Results
     st.subheader("🔍 Prediction Results")
     st.markdown(f"**Predicted Cluster ID:** `{cluster_id}`")
 
+    # Get theme info
+    theme_title, theme_desc = cluster_themes.get(cluster_id, ("🗂️ Unknown Cluster", "No description available."))
+    st.markdown(f"### {theme_title}")
+    st.caption(theme_desc)
+
+    # Display cluster info
     if isinstance(cluster_label, dict):
         size = cluster_label.get("size", "N/A")
         top_terms = cluster_label.get("top_terms", {})
